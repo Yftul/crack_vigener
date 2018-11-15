@@ -75,8 +75,8 @@ int    funcminimumnumber;
 char* plaintext;
 char* cryptedtext; 
 char* decryptedtext;
-char *shiftedtext[MAXKEYLENGTH];
-char *symbolgroups[MAXKEYLENGTH];
+char* shiftedtext[MAXKEYLENGTH];
+char* symbolgroups[MAXKEYLENGTH];
 int allocateflag;
 
 int Kasiskikeylen, Fridmankeylen;
@@ -148,6 +148,10 @@ unsigned long gcd( unsigned long n, unsigned long m )
 	if ( 0 == cached )
 	{
 		cached = (n > m)?gcd(n - m, m):(n < m)?gcd(n, m - n):n;
+	}
+
+	if ( ( n < CACHESIZE ) && ( m < CACHESIZE ) )
+	{
 		cacheGCD[n - 1][m - 1] = cached;
 	}
 
